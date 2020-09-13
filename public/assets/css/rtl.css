@@ -1,0 +1,285 @@
+.main-menu{
+    direction: rtl;
+}
+.user-panel{
+    direction: rtl;
+}
+.site-btn{
+    letter-spacing: 0;
+}
+.filter-form{
+    text-align: right;
+    direction: rtl;
+}
+.filter-form input{
+    margin-left: 18px;
+    margin-right: 0;
+}
+.filter-form select{
+    margin-left: 18px;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 10px;
+}
+.propertie-item{
+    text-align: right;
+}
+.propertie-info{
+    direction: rtl;
+}
+.propertie-info .info-warp{
+    float: right;
+}
+.propertie-info .price{
+    float: left;
+}
+.services-section{
+    direction: rtl;
+}
+.services-section .offset-lg-1{
+    margin-left: 0;
+    margin-right: 8.333333%;
+}
+.section-title{
+    text-align: right;
+}
+.service-item{
+    text-align: right;
+    direction: rtl;
+}
+.service-item i{
+    float: right;
+}
+.service-item .service-text{
+    padding-right: 80px;
+    padding-left: 0;
+}
+.feature-item{
+    direction: rtl;
+}
+.feature-item .feature-pic{
+    text-align: right;
+}
+.room-info{
+    text-align: right;
+}
+.room-info p i{
+    margin-right: 0;
+    margin-left: 10px;
+}
+.room-info:last-child .rf-right{
+    padding-right: 0;
+    padding-left: 10px;
+}
+.room-info .rf-left{
+    float: right;
+}
+.room-info .rf-right{
+    float: left;
+}
+.gallery-item .gi-info{
+    direction: rtl;
+}
+.section-title p{
+    direction: rtl;
+}
+.blog-item h5{
+    text-align: right;
+    direction: rtl;
+}
+.blog-item p{
+    text-align: right;
+    direction: rtl;
+}
+.blog-item .blog-meta{
+    text-align: right;
+    direction: rtl;
+}
+.blog-item .blog-meta span{
+    margin-right: 0;
+    margin-left: 10px;
+}
+.blog-item .blog-meta span i{
+    margin-right: 0;
+    margin-left: 5px;
+}
+.footer-section{
+    direction: rtl;
+    text-align: right;
+}
+.footer-widget .contact-widget p i{
+    margin-left: 10px;
+    margin-right: 0;
+}
+.footer-widget .double-menu-widget ul:last-child{
+    margin-left: 0;
+    margin-right: 50px;
+}
+.footer-widget .double-menu-widget ul a:after{
+    content: "\f100";
+    left: 0;
+    right: -20px;
+}
+.footer-widget .double-menu-widget ul a:hover{
+    right: 20px;
+}
+.footer-widget .social a{
+    margin-right: 0;
+    margin-left: 35px;
+}
+.site-breadcrumb{
+    direction: rtl;
+    text-align: right;
+}
+.site-breadcrumb a i{
+    margin-right: 0;
+    margin-left: 5px;
+}
+.site-breadcrumb span i:before{
+    content: "\f104";
+}
+.contact-info-warp {
+    direction: rtl;
+}
+.contact-info-warp p{
+    margin-right: 0;
+    margin-left: 80px;
+    font-size:18px;
+}
+.contact-info-warp p i{
+    margin-right: 0;
+    margin-left: 10px;
+}
+.contact-form textarea{
+    direction: rtl;
+}
+.contact-form input:first-child{
+    direction: rtl;
+}
+.about-text{
+    text-align: right;
+    direction: rtl;
+}
+.about-list li i{
+    margin-right: 0;
+    margin-left: 5px;
+}
+.member-info h5{
+    text-align: right;
+}
+.member-info span{
+    display: inherit;
+    text-align: right;
+}
+.member-info .member-contact:after{
+    right: 0;
+    left: unset;
+    width: 75px;
+}
+.author-card .author-img{
+    float: left;
+}
+.author-card .author-info{
+    margin-right: 0;
+    text-align: right;
+}
+.contact-form-card h5{
+    direction: rtl;
+    text-align: right;
+    font-size: 18px;
+}
+.contact-form-card input{
+    direction: rtl;
+}
+.contact-form-card input:nth-child(2):focus{
+    direction: ltr;
+}
+.contact-form-card textarea{
+    direction: rtl;
+}
+.rp-item .rp-pic{
+    text-align: right;
+}
+#sl-slider{
+    text-align: right;
+}
+.single-list-content{
+    text-align: right;
+    direction: rtl;
+}
+.single-list-content p i{
+    margin-right: 0;
+    margin-left: 5px;
+}
+.plan-accordion .panel-link{
+    text-align: right;
+}
+.plan-accordion .panel-link i{
+    right: unset;
+    left: 17px;
+}
+.plan-accordion .panel-link span{
+    margin-left: 0;
+    margin-right: 20px;
+}
+.rtl{
+    direction: rtl;
+}
+.page-top-section.single-blog a i{
+    margin-right: 0;
+    margin-left: 10px;
+}
+.singel-blog-content p{
+    text-align: justify;
+    direction: rtl;
+}
+.singel-blog-content blockquote{
+    direction: rtl;
+    text-align: justify;
+    border-left: unset;
+    border-right: 5px solid #30caa0;
+}
+.blog-tags{
+    direction: rtl;
+}
+.post-author{
+    direction: rtl;
+    text-align: right;
+}
+.post-author .pa-thumb{
+    float: right;
+}
+.post-author .pa-content{
+    padding-left: 0;
+    padding-right: 110px;
+}
+.comment-warp{
+    direction: rtl;
+    text-align: right;
+}
+.comment-warp .comment .comment-avator{
+    float: right;
+}
+.comment-warp .comment .comment-content{
+    padding-left: 0;
+    padding-right: 100px;
+}
+.comment-warp .comment .comment-content h5 span{
+    margin-left: 0;
+    margin-right: 15px;
+}
+.comment-warp .comment-list .replay-comment-list{
+    margin-left: 0;
+    margin-right: 14%;
+}
+.resume img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    float: right;
+    margin-left: 15px;
+}
+.resume p{
+    text-align: justify;
+    line-height: 35px;
+}

@@ -1,0 +1,8 @@
+[23-Apr-2020 18:52:24 Europe/Berlin] 
+<h1>Fatal error</h1>
+<p>Uncaught exception: 'Exception'</p>
+<p>Message : 'no route matched.'</p>
+<p>Stack trace: <pre>#0 D:\learning\php level 2\mvcproject\public\index.php(11): Core\Router->dispatch('robots.txt')
+#1 {main}</pre></p>
+<p>Thrown in 'D:\learning\php level 2\mvcproject\Core\Router.php' on line 78</p>
+

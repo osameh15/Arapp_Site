@@ -1,0 +1,18 @@
+[26-Apr-2020 09:54:01 Europe/Berlin] 
+<h1>Fatal error</h1>
+<p>Uncaught exception: 'Illuminate\Database\QueryException'</p>
+<p>Message : 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'badzohreeee@gmail.com' for key 'users_email_unique' (SQL: update `users` set `email` = badzohreeee@gmail.com, `name` = mohammad, `password` = 7iS8TepqAmeWDyz+PnEktMl0Ge0yN2M0MDhhNjFm, `salt` = 27c408a61f, `updated_at` = 2020-04-26 09:54:01 where `id` = 13)'</p>
+<p>Stack trace: <pre>#0 D:\learning\php level 2\mvcproject\vendor\illuminate\database\Connection.php(669): Illuminate\Database\Connection->runQueryCallback('update `users` ...', Array, Object(Closure))
+#1 D:\learning\php level 2\mvcproject\vendor\illuminate\database\Connection.php(467): Illuminate\Database\Connection->run('update `users` ...', Array, Object(Closure))
+#2 D:\learning\php level 2\mvcproject\vendor\illuminate\database\Connection.php(410): Illuminate\Database\Connection->affectingStatement('update `users` ...', Array)
+#3 D:\learning\php level 2\mvcproject\vendor\illuminate\database\Query\Builder.php(2071): Illuminate\Database\Connection->update('update `users` ...', Array)
+#4 D:\learning\php level 2\mvcproject\vendor\illuminate\database\Eloquent\Builder.php(531): Illuminate\Database\Query\Builder->update(Array)
+#5 D:\learning\php level 2\mvcproject\vendor\illuminate\database\Eloquent\Model.php(1551): Illuminate\Database\Eloquent\Builder->update(Array)
+#6 D:\learning\php level 2\mvcproject\vendor\illuminate\database\Eloquent\Model.php(1470): Illuminate\Database\Eloquent\Model->performUpdate(Object(Illuminate\Database\Eloquent\Builder), Array)
+#7 D:\learning\php level 2\mvcproject\App\Controllers\AuthController.php(142): Illuminate\Database\Eloquent\Model->save()
+#8 [internal function]: App\Controllers\AuthController->register()
+#9 D:\learning\php level 2\mvcproject\Core\Router.php(67): call_user_func_array(Array, Array)
+#10 D:\learning\php level 2\mvcproject\public\index.php(11): Core\Router->dispatch('registerUser')
+#11 {main}</pre></p>
+<p>Thrown in 'D:\learning\php level 2\mvcproject\vendor\illuminate\database\Connection.php' on line 713</p>
+
