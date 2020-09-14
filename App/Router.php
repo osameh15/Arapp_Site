@@ -54,6 +54,8 @@ $router->add('/addAdvertiseApp', 'DashboardController@addAdvertiseApp');
 $router->add('/getNews', 'HomeController@getNews');
 //get category
 $router->add('/getCategory', 'HomeController@getCategory');
+//get Notification
+$router->add('/getNotification', 'HomeController@getNotification');
 
 //endregion Application Routes
 
