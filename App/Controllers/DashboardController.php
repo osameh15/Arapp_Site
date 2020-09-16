@@ -79,12 +79,12 @@ class DashboardController extends Controller
             header("Location: /login");
             exit();
         }
-        return View::renderTemplate('dashboard');
+        return View::renderTemplate('dashboard/dashboard');
 
     }
 
     //Function to edit profile user ...
-    public function DashboardEditUser()
+    public function dashboardEditUser()
     {
         if (!isset($_SESSION['userLogin']))
         {
@@ -198,7 +198,7 @@ class DashboardController extends Controller
         }
 
 
-        return View::renderTemplate('dashboardEditUser',
+        return View::renderTemplate('dashboard/EditUser',
             [
                 'user' => $user,
                 'response' => $response
@@ -271,12 +271,135 @@ class DashboardController extends Controller
         }
 
 
-        return View::renderTemplate("add_advertise",
+        return View::renderTemplate("dashboard/addService",
         [
             'user' => $user,
             'categories' => $categories,
             "errors" => $reponse,
         ]);
+    }
+
+    //Function to handle My comments ...
+    public function myComments()
+    {
+        return View::renderTemplate('dashboard/comments');
+    }
+
+    //Function to access followers ...
+    public function followers()
+    {
+        return View::renderTemplate('dashboard/followers');
+
+    }
+
+    //Function to handle my service
+    public function myServices()
+    {
+        $response = null;
+        if (!isset($_SESSION['userLogin'])) {
+            header("Location: /login");
+            exit();
+        }
+        $user = User::where("mobile", $_SESSION['userLogin'])->first();
+        if (isset($_POST['deletedService'])) {
+            $deletedService = Advertise::where("id", $_POST['deletedService'])->first();
+            if (!is_null($deletedService)) {
+                if ($deletedService->delete()) {
+                    if (file_exists($deletedService->banner)) {
+                        unlink($deletedService->banner);
+                    }
+                    $response['success'] = "با موفقیت حذف شد.";
+                }
+            }
+        }
+        $service = $user->advertises()->get();
+
+        return View::renderTemplate('dashboard/mySerivce', [
+            'services' => $service,
+            'response' => $response,
+        ]);
+    }
+
+    //Function to Edit service
+    public function editService()
+    {
+        $reponse = null;
+        $service = Advertise::where("slug", $_GET['service'])->first();
+        $user = User::where("mobile", $_SESSION['userLogin'])->first();
+        $categories = Category::all();
+
+        if (!is_null($service)) {
+            if ($service->user_id === $user->id) {
+
+                if (isset($_POST['editService'])) {
+                    if (!empty($_POST['title']) && !empty($_POST['subtitle']) && !empty($_POST['address']) && !empty($_POST['dis']) && isset($_POST['category'])) {
+                        if (strlen($_POST['title']) < 3) {
+                            $reponse['errors'][] = "عنوان باید حداقل سه حرف باشد.";
+                        }
+                        if (strlen($_POST['subtitle']) < 3) {
+                            $reponse['errors'][] = "زیر عنوان باید حداقل پنج حرف باشد.";
+                        }
+
+                        if (strlen($_POST['dis']) > 30) {
+                            $reponse['errors'][] = "توضیحات حداکثر باید حداقل 30 حرف باشد.";
+                        }
+                        $category = Category::where("id", $_POST['category'])->first();
+                        if (empty($category)) {
+                            $reponse['errors'][] = "چنین دسته بندی وجود ندارد.";
+                        } else {
+                            $user->cat_id = $category->id;
+                        }
+
+                        if (strlen($_POST['address']) < 8) {
+                            $reponse['errors'][] = " ادرس حداقل باید 8 حرف باشد.";
+                        }
+
+                    } else {
+                        $reponse['errors'][] = "لطفا تمامی فیلد ها را پر کنید.";
+                    }
+                    if (!empty($_FILES['advertise_img'])) {
+                        $extentions = ['image/jpeg', 'image/png'];
+                        if (!in_array($_FILES['advertise_img']['type'], $extentions)) {
+                            $reponse['errors'][] = 'فایل باید از نوع jpeg , png باشد.';
+                        } else {
+                            $t = md5(time());
+                            $fnm = $_FILES['advertise_img']['name'];
+                            $pathFileName = 'Images/' . 'Advertise/' . $t . $fnm;
+                            if (!move_uploaded_file($_FILES['advertise_img']['tmp_name'], $pathFileName)) {
+                                $reponse['errors'][] = 'خطایی در اپلود عکس به وجود آمده است.';
+                            } else {
+                                $service->banner = $pathFileName;
+                            }
+                        }
+                    }
+
+                    if (empty($reponse['errors'])) {
+                        $reponse['success'] = "ویرایش با موفقیت انجام شد.";
+                        $service->user_id = $user->id;
+                        $service->etitle = $_POST['subtitle'];
+                        $service->cat_id = $_POST['category'];
+                        $service->title = $_POST['title'];
+                        $service->description = $_POST['dis'];
+                        $service->address = $_POST['address'];
+                        $service->save();
+                    }
+
+
+                }
+
+
+                return View::renderTemplate('dashboard/editService', [
+                    'service' => $service,
+                    'categories' => $categories,
+                    'response' => $reponse,
+                ]);
+            } else {
+                //Todo:: redirect to forrbidden page
+            }
+
+        }
+
+        //Todo:: redirect to not found page
     }
 
     //endregion

@@ -19,12 +19,24 @@ $router->add('/login', 'AuthController@login');
 $router->add("/logout", "AuthController@logout");
 //dashboard Routes
 $router->add('/dashboard',"DashboardController@dashboard");
-$router->add('/dashboard/editUserProfile','DashboardController@DashboardEditUser') ;
-$router->add("/addAdvertise","DashboardController@addAdvertise");
+$router->add('/dashboard/editUserProfile','DashboardController@dashboardEditUser') ;
+$router->add("/dashboard/addAdvertise","DashboardController@addAdvertise");
+$router->add("/dashboard/myComments", "DashboardController@myComments");
+$router->add("/dashboard/followers", "DashboardController@followers");
+$router->add("/dashboard/myServices", "DashboardController@myServices");
+$router->add('/dashboard/deleteService', "DashboardController@deleteService");
+$router->add('/dashboard/editService', "DashboardController@editService");
 //contact us
 $router->add('/contact',"HomeController@contactUs");
 //about us
 $router->add("/about","HomeController@about");
+$router->add("/blog", "HomeController@blog");
+//comments
+$router->add("/add_comment", 'HomeController@addComment');
+$router->add("/add_rate", "HomeController@add_rate");
+//search routes
+$router->add("/search", "searchController@search");
+$router->add("/service", "HomeController@showService");
 
 //endregion website Routes
 

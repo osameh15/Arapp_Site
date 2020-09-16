@@ -1,0 +1,670 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    direction: rtl;
+    font-family: IRs;
+}
+a{
+    text-decoration: none;
+}
+
+/*navbar*/
+.toggle-btn {
+    position: absolute;
+    right: 180px;
+    top: 1rem;
+    cursor: pointer;
+    color: #fff;
+    transition: all 500ms linear;
+
+
+}
+
+.my-navbar {
+    background: #24384f;
+    width: 100%;
+    height: 50px;
+}
+
+/*endnavbar*/
+
+
+/*sidebar*/
+#sidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background: #eeeeee;
+    transition: all 500ms linear;
+    z-index: -1;
+}
+
+#sidebar img {
+    display: block;
+    margin: 4rem auto;
+}
+
+#sidebar.disActive {
+    right: -200px;
+}
+
+#sidebar ul {
+    list-style-type: none;
+    text-align: right;
+    margin-top: 5rem;
+}
+
+#sidebar ul li:hover {
+    background: #988c8c30;
+}
+
+#sidebar ul li a {
+
+    display: block;
+    text-decoration: none;
+    color: #24384f;
+    padding: 10px 16px;
+    font-size: .8em;
+    margin-right: 3em;
+
+}
+
+#sidebar ul li a .fa {
+    color: #03563f;
+}
+
+#sidebar ul li:last-child {
+    position: absolute;
+    bottom: 8%;
+    width: 100%;
+}
+
+#sidebar ul li:last-child {
+    padding-right: 1em;
+}
+
+/*endsidebar*/
+
+
+/*content*/
+#content {
+    width: 100%;
+}
+
+/*endcontent*/
+
+/*costum bootstrap*/
+.navbar {
+    margin: 0;
+    padding: 0;
+
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    direction: rtl;
+    font-family: IRs;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.top_navbar {
+    background: #24384f;
+    height: 60px;
+    display: flex;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.top_navbar .hamburger {
+    width: 80px;
+    background: #24384f;
+    position: relative;
+    font-size: 28px;
+}
+
+.top_navbar .hamburger .hamburger__inner {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    width: 40px;
+    height: 20px;
+}
+
+.top_navbar .hamburger__inner > div {
+    width: 30px;
+    height: 2px;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.top_navbar .hamburger div.two {
+    top: 10px;
+    width: 40px;
+}
+
+.top_navbar .hamburger div.three {
+    top: 20px;
+}
+
+.top_navbar .menu {
+    width: calc(100% - 80px);
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.top_navbar .menu .logo {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.top_navbar .menu .dashboard-text {
+    color: #ffffff;
+
+}
+
+
+.top_navbar .menu .right_menu ul {
+    display: flex;
+}
+
+.top_navbar .menu .right_menu ul li {
+    position: relative;
+}
+
+.top_navbar .menu .right_menu ul li .fa {
+    font-size: 22px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.top_navbar .menu .right_menu ul li .profile_dd {
+    position: absolute;
+    top: 52px;
+    left: -10px;
+    background: #fff;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
+    width: 180px;
+    border-radius: 3px;
+    display: none;
+    user-select: none;
+}
+
+.top_navbar .menu .right_menu ul li .profile_dd.active {
+    display: block;
+}
+
+.top_navbar .menu .right_menu ul li .profile_dd .dd_item {
+    padding: 10px;
+    cursor: pointer;
+    color: #004D40;
+}
+
+.top_navbar .menu .right_menu ul li .profile_dd .dd_item:hover {
+    background: #E0F2F1;
+}
+
+.top_navbar .menu .right_menu ul li .profile_dd:before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 10px;
+    border: 10px solid;
+    border-color: transparent transparent #fff transparent;
+}
+
+.right_menu .fa {
+    margin-top: 20px;
+}
+
+.main_container .sidebar {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    width: 225px;
+    height: 100%;
+    background: #eeeeee;
+    transition: all 0.3s ease;
+}
+
+.main_container .sidebar .sidebar__inner {
+    position: relative;
+}
+
+.main_container .sidebar .profile {
+    display: flex;
+    align-items: center;
+    color: #03563f;
+    padding: 20px 0;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.main_container .sidebar .profile .img {
+    padding: 0 18px;
+}
+
+.main_container .sidebar .profile img {
+    width: 45px;
+}
+
+.main_container .sidebar .profile p:first-child {
+    font-size: 14px;
+    color: #24384f;
+    margin-bottom: 3px;
+}
+
+.main_container .container {
+    margin-top: 60px;
+    width: calc(100% - 225px);
+    margin-right: 225px;
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+
+.main_container .sidebar ul li a {
+    color: #03563f;
+    font-size: 15px;
+    padding: 10px 5px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1px;
+    transition: all 0.3s ease;
+}
+
+.main_container .sidebar ul li a .icon {
+    margin-right: 25px;
+    font-size: 15px;
+
+}
+
+.main_container .sidebar ul li a span {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.main_container .sidebar ul li a:hover,
+.main_container .sidebar ul li a.active {
+    background: #fff;
+    color: #004D40;
+}
+
+.main_container .container .item {
+    background: #fff;
+    border: 1px solid #E0F2F1;
+    margin-bottom: 30px;
+    padding: 20px;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+
+/*content*/
+
+
+.table .image_table {
+    width: 150px;
+    height: 75px;
+}
+
+.table td, .table th {
+    vertical-align: middle !important;
+}
+
+.modal-header .myClose {
+    position: absolute;
+    left: 15px;
+}
+
+.modal .my_modal_footer button {
+    margin: 0 0.15rem;
+}
+
+
+/*add product*/
+#add_product_form {
+    width: 60%;
+    border: 1px solid #eeeeee;
+    box-shadow: 1px 1px 6px 0px #c2c2c2;
+    padding: 1em 2em;
+
+}
+
+#add_product_form div {
+    margin: 1em 0;
+}
+
+#add_product_form div * {
+    font-family: IRs;
+}
+
+#add_product_form div input, #add_product_form div textarea, #add_product_form div select {
+
+    width: 100%;
+    outline: none;
+    border: 1px solid #ececec;
+    box-shadow: 1px 1px 2px 0px #eeee;
+    padding: .7em .4em
+}
+
+#add_product_form div textarea {
+    resize: none;
+}
+
+#add_product_form #file {
+    display: none;
+}
+
+#add_product_form #imageContiner img {
+    display: block;
+    margin: auto;
+}
+
+#add_product_form .add_product_button {
+    cursor: pointer;
+    color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    border: none;
+    font-family: IRs;
+    display: block;
+    margin-right: auto;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+}
+
+
+@media (max-width: 1280px) {
+    #add_product_form {
+        width: 100%;
+    }
+
+}
+
+/*end add product*/
+/*followers*/
+
+#followers {
+    display: block;
+    margin: 5rem auto;
+
+}
+
+#followers .item {
+    display: inline-block;
+    width: 200px;
+    height: 230px;
+    box-shadow: 0px 0px 5px 0px #cccc;
+    padding-top: 25px;
+
+}
+
+#followers img {
+
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    border-radius: 100%;
+}
+
+#followers b {
+    display: block;
+    text-align: center;
+    padding: 12px;
+
+}
+
+#followers button {
+    outline: none;
+    background: #eee;
+    border: 1px solid #919395;
+    color: #3f3939;
+    padding: 0.3em .6em;
+    border-radius: 5px;
+    font-size: .9em;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    font-family: IRs;
+}
+
+#followers button .fa {
+    color: #539a9a;
+}
+
+/*tabs*/
+
+#tabs li {
+    display: inline-block;
+    margin: 0 auto;
+    background: #e1e7ec;
+    color: black;
+    padding: 0.4em 0.7em;
+    border-radius: 50px;
+    font-size: 0.9em;
+    cursor: pointer;
+    border: 1px solid #918d8d;
+    transition: all .5s ease;
+
+}
+
+#tabs li:hover {
+    background: #85878a;
+    color: #ffffff;
+
+}
+
+#tabs li.active {
+    background: #454545;
+    color: #ffffff;
+}
+
+
+.display-block {
+    display: block !important;
+}
+
+.display-none {
+    display: none;
+}
+
+/*endfollowers*/
+
+/*comments*/
+#comments {
+
+
+}
+
+#comments .comment_item {
+
+}
+
+#comments .comment_item {
+    box-shadow: 0px 1px 3px #c8c2c2;
+    padding: 0.4em 0.7em;
+}
+
+#comments .text_container_comment h4 {
+    font-size: 18px;
+    color: #24384f;
+}
+
+#comments .text_container_comment p {
+    font-size: 0.85em;
+    color: #7e7e7e;
+}
+
+#comments img {
+    width: 100%;
+    height: 150px;
+}
+
+
+/*endcomments*/
+
+
+/* after adding active class */
+.wrapper.active .sidebar {
+    width: 80px;
+}
+
+.wrapper.active .sidebar ul li a span.title,
+.wrapper.active .profile_info {
+    display: none;
+}
+
+.wrapper.active .main_container .container {
+    width: calc(100% - 80px);
+    margin-right: 80px;
+}
+
+
+.main_container #container {
+    margin-top: 60px;
+    width: calc(100% - 225px);
+    margin-right: 225px;
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+
+.main_container #container .item {
+    background: #fff;
+    border: 1px solid #E0F2F1;
+    margin-bottom: 30px;
+    padding: 20px;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.wrapper.active .main_container #container {
+    width: calc(100% - 80px);
+    margin-right: 80px;
+}
+
+
+/*list*/
+#list {
+}
+
+
+#list .list_item {
+    width: 100%;
+    height: 250px;
+    box-shadow: 0px 0px 5px 0px #cccc;
+    padding: .2em;
+    border-radius: 3px;
+}
+
+#list .list_item img {
+    width: 100%;
+    height: 160px;
+}
+
+#list .list_item h4 {
+    color: #24384f;
+    font-size: 1.1rem;
+    margin-top: 5px;
+}
+
+#list .list_item .actions {
+    padding: 5px;
+    transition: all .5s;
+}
+
+#list .list_item .actions *:not(a) {
+    cursor: pointer;
+    font-size: 1.1rem;
+    background-color: #eeeeee80;
+    padding: .3em .5em;
+    border-radius: 3px;
+    font-weight: bold;
+    transition: all .5s;
+
+}
+
+#list .list_item .actions .fa-edit {
+    color: #00008b87;
+
+}
+
+#list .list_item .actions .fa-trash {
+    color: #ff000087;
+}
+
+#list .list_item .actions .fa-edit:hover {
+    color: #00008bba;
+    background-color: #eeeeee;
+
+
+}
+
+#list .list_item .actions .fa-trash:hover {
+    color: #ff0000b5;
+    background-color: #eeeeee;
+
+}
+
+
+/*endlist*/
+
+
+/*dashboard edit user*/
+
+.notification-reciver {
+    user-select: none;
+    font-size: .9em;
+}
+.userUpload{
+    width: 100px;
+    height: 100px;
+}
+
+/*end dashboard edit user*/
+
+
+/*deleteService form*/
+#deletedService,#editServiceForm{
+    display: none;
+}
+/*end deleteService form*/
+
+

@@ -1,9 +1,11 @@
 <?php namespace App\Controllers;
 
-use App\Models\Article;
+use App\Models\Advertise;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\News;
 use App\Models\Notification;
+use App\Models\Rate;
 use App\Models\User;
 use Core\Controller;
 use Core\View;
@@ -11,6 +13,7 @@ use IntlDateFormatter;
 
 class HomeController extends Controller
 {
+
     //region Helper Functions
     public function createdAtDateApp($id, $type)
     {
@@ -44,21 +47,153 @@ class HomeController extends Controller
     //endregion
 
     //region website
+
+    //Index ...
     public function index()
     {
-        return View::renderTemplate("index");
+        $categories = Category::all();
+        $specials = Advertise::query()->where("special", 1)->get();
+        $no_specials = Advertise::query()->where("special", null)->get();
+        return View::renderTemplate("index",
+        [
+            'categories' => $categories,
+            'specials' => $specials,
+            'no_specials' => $no_specials,
+        ]);
     }
 
+    //Contact with us ...
     public function contactUs()
     {
-        return View::renderTemplate("contact");
+        $categories = Category::all();
+
+        return View::renderTemplate("contact",
+        [
+            'categories' => $categories
+        ]);
 
     }
 
+    //About us ...
     public function about()
     {
-        return View::renderTemplate("about");
+        $categories = Category::all();
+        return View::renderTemplate("about",
+        [
+            'categories' => $categories
+        ]);
     }
+
+    //Function to show service of each category ...
+    public function showService()
+    {
+        if (isset($_GET['service']))
+        {
+            $categories = Category::all();
+            $service = Advertise::query()->where("slug", $_GET['service'])->first();
+            $comments = $service->comments()->with("user")->get();
+
+            $rates = Rate::where("ads_id",$service->id)->get();
+            $count = 0;
+            $total = 0;
+            foreach ($rates as $rate)
+            {
+                $count++;
+                $total+=$rate->rate;
+
+            }
+            $avg = $total/$count;
+            return View::renderTemplate("servicePage",
+            [
+                'categories' => $categories,
+                'service' => $service,
+                'comments' => $comments,
+                'avg'=>$avg
+            ]);
+        }
+        return View::renderTemplate("servicePage", []);
+    }
+
+    //Function to add comment ...
+    public function addComment()
+    {
+        if (!isset($_SESSION['userLogin']))
+        {
+            header("Location: /login");
+        }
+
+        $service = Advertise::query()->where("slug", $_GET['service'])->first();
+        $user = User::query()
+            ->where("mobile", $_SESSION['userLogin'])
+            ->orWhere("email", $_SESSION['userLogin'])->first();
+
+        $addedComment = new Comment();
+        $addedComment->user_id = $user->id;
+        $addedComment->ads_id = $service->id;
+        $addedComment->body = $_POST['comment-title'];
+        $addedComment->enable_comment = 1;
+        $addedComment->save();
+
+        header("Location: /service?service=" . $service->slug);
+    }
+
+    //Function to add Rate ...
+    public function add_rate()
+    {
+        if (!isset($_SESSION['userLogin']))
+        {
+            header("Location: /login");
+        }
+        else
+        {
+            $service = Advertise::where("slug", $_GET['service'])->first();
+            $user = User::query()->where("mobile", $_SESSION['userLogin'])->first();
+            $categories = Category::all();
+            $comments = $service->comments()->with("user")->get();
+            $rates = Rate::where("ads_id",$service->id)->get();
+            $count = 0;
+            $total = 0;
+            foreach ($rates as $rate)
+            {
+                $count++;
+                $total+=$rate->rate;
+
+            }
+            $avg = $total/$count;
+            $ads_rate = Rate::where("user_id", $user->id)
+                ->where("ads_id",$service->id)
+                ->first();
+            if (is_null($ads_rate))
+            {
+                $ads_rate = Rate::create
+                ([
+                    "user_id"=>$user->id,
+                    "ads_id"=>$service->id,
+                    "rate"=>$_POST['rating']
+                ]);
+            }
+            else
+            {
+                $ads_rate->rate = $_POST['rating'];
+                $ads_rate->save();
+            }
+
+            return View::renderTemplate("servicePage",
+                [
+                    'categories' => $categories,
+                    'service' => $service,
+                    'comments' => $comments,
+                    'avg'=>$avg,
+                ]);
+        }
+    }
+
+    //Blog of Arapp ...
+    public function blog()
+    {
+        dd("ss");
+    }
+
     //endregion
 
     //region Application

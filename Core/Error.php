@@ -32,7 +32,6 @@ class Error
         }
         else
         {
-
             $log = dirname(__DIR__) . '/storage/logs/' . date('Y-m-d') . '.txt';
             ini_set('error_log' , $log);
 
@@ -45,8 +44,6 @@ class Error
             error_log($message);
 
             echo View::renderTemplate("errors.{$code}");
-
         }
     }
-
 }

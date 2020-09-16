@@ -11,7 +11,8 @@ class AuthController extends Controller
     private function checkUserLogin($salt, $encrypted_password, $password)
     {
         $hash = $this->checkHashSSHA($salt, $password);
-        if ($encrypted_password != $hash) {
+        if ($encrypted_password != $hash)
+        {
             return false;
         }
         return true;
@@ -32,9 +33,12 @@ class AuthController extends Controller
 
     private function generate_random_code()
     {
-        try {
+        try
+        {
             return random_int(100000, 999999);
-        } catch (\Exception $e) {
+        }
+        catch (\Exception $e)
+        {
             return null;
         }
     }
@@ -49,32 +53,46 @@ class AuthController extends Controller
     private function ValidateRegisterFrom($name, $email, $password, $reptitionPassword, $service)
     {
         $errors = null;
-        if ($name || $email || $password || $reptitionPassword || $service) {
-            if (strlen($name) < 3) {
+        if ($name || $email || $password || $reptitionPassword || $service)
+        {
+            if (strlen($name) < 3)
+            {
                 $errors[] = "نام حداقل باید 3 کاراکتر باشد";
             }
-            if (strlen($email) == 0) {
+            if (strlen($email) == 0)
+            {
                 $errors[] = "لطفا آدرس ایمیل را وارد کنید";
-            } else {
+            }
+            else
+            {
                 $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+                {
                     $errors[] = "آدرس ایمیل را به درستی وارد کنید";
                 }
             }
-            if (strlen($password) == 0) {
+            if (strlen($password) == 0)
+            {
                 $errors[] = "لطفا رمزعبور خود را وارد کنید";
-            } else {
-                if (!$this->validatePassword($password)) {
+            }
+            else
+            {
+                if (!$this->validatePassword($password))
+                {
                     $errors[] = "رمزعبور حداقل باید دارای 6 کاراکتر(ترکیبی از عدد و حروف بزرگ و کوچک و کاراکترهای خاص) باشد";
                 }
             }
-            if ($password != $reptitionPassword) {
+            if ($password != $reptitionPassword)
+            {
                 $errors[] = "رمزعبور و تکرار رمزعبور باید یکسان باشد";
             }
-            if (is_null($service)) {
+            if (is_null($service))
+            {
                 $errors[] = "لطفا یکی از سرویس ها را انتخاب کنید";
             }
-        } else {
+        }
+        else
+        {
             $errors[] = "لطفا تمامی فیلد ها را پر کنید";
         }
         return $errors;
@@ -84,7 +102,8 @@ class AuthController extends Controller
     {
         $mobileRegex = '~^(0098|\+?98|0)9\d{9}$~';
         preg_match($mobileRegex, $phone, $matches);
-        if (!empty($matches)) {
+        if (!empty($matches))
+        {
             $phone = '0' . substr($phone, -10, 10);
             return $phone;
         }
@@ -110,6 +129,7 @@ class AuthController extends Controller
                 $user = User::where("mobile", $phone)->first();
                 if (!isset($user->mobile))
                 {
+                    var_dump("intp");
                     $user = new User();
                     $user->verified_code = $this->generate_random_code();
                     $user->mobile = $phone;
@@ -134,9 +154,8 @@ class AuthController extends Controller
             }
         }
 
-        return View::renderTemplate("register", ['response' => $response]);
+        return View::renderTemplate("auth-views/register", ['response' => $response]);
     }
-
     public function verifyUser()
     {
         if (!isset($_SESSION['tmp_user']))
@@ -174,9 +193,8 @@ class AuthController extends Controller
             $user->save();
         }
 
-        return View::renderTemplate('verify', ['response' => $response]);
+        return View::renderTemplate('auth-views/verify', ['response' => $response]);
     }
-
     public function register()
     {
         if (!isset($_SESSION['register_user']))
@@ -215,7 +233,8 @@ class AuthController extends Controller
         {
             header('Location: /register');
         }
-        return View::renderTemplate('registerUser', ['response' => $response, 'post' => null]);
+
+        return View::renderTemplate('auth-views/registerUser', ['response' => $response, 'post' => null]);
     }
 
     //reset password user
@@ -254,9 +273,8 @@ class AuthController extends Controller
             }
         }
 
-        return View::renderTemplate("resetPasswordPhone", ['response' => $resposne]);
+        return View::renderTemplate("auth-views/resetPasswordPhone", ['response' => $resposne]);
     }
-
     public function resetPasswordCode()
     {
         if (!isset($_SESSION['reset_password']))
@@ -292,9 +310,9 @@ class AuthController extends Controller
                 $response['errors'] = 'کاربری با این شماره وجود ندارد';
             }
         }
-        return View::renderTemplate('resetPasswordCode', ['response' => $response]);
-    }
 
+        return View::renderTemplate('auth-views/resetPasswordCode', ['response' => $response]);
+    }
     public function resetPassword()
     {
         if (!isset($_SESSION['resetPasswordUser']))
@@ -340,7 +358,7 @@ class AuthController extends Controller
             }
         }
 
-        return View::renderTemplate('reset_password', ['response' => $response]);
+        return View::renderTemplate('auth-views/reset_password', ['response' => $response]);
     }
 
     //login user
@@ -376,7 +394,7 @@ class AuthController extends Controller
             }
         }
 
-        return View::renderTemplate('login', ['response' => $response]);
+        return View::renderTemplate('auth-views/login', ['response' => $response]);
     }
 
     //logout user
@@ -441,7 +459,6 @@ class AuthController extends Controller
             echo json_encode($response);
         }
     }
-
     public function verifyPhoneApp()
     {
         header('Content-Type: application/json');
@@ -491,7 +508,6 @@ class AuthController extends Controller
             echo json_encode($response);
         }
     }
-
     public function registerUserApp()
     {
         header('Content-Type: application/json');
@@ -609,7 +625,6 @@ class AuthController extends Controller
             echo json_encode($response);
         }
     }
-
     public function resetPasswordCodeApp()
     {
         header('Content-Type: application/json');
@@ -649,7 +664,6 @@ class AuthController extends Controller
             echo json_encode($response);
         }
     }
-
     public function resetPasswordApp()
     {
         header('Content-Type: application/json');
