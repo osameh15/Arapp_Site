@@ -3,6 +3,7 @@
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\News;
+use App\Models\Notification;
 use App\Models\User;
 use Core\Controller;
 use Core\View;
@@ -99,6 +100,32 @@ class HomeController extends Controller
                 $temp["id"] = $category->id;
                 $temp["image"] = $category->image;
                 $temp["title"] = $category->title;
+                array_push($response, $temp);
+            }
+            echo json_encode($response);
+        }
+    }
+
+    //Get Notification from server ...
+    public function getNotification()
+    {
+        header('Content-Type: application/json');
+        $response = array();
+        $notify = Notification::all();
+        if (isset($notify))
+        {
+            foreach ($notify as $notification)
+            {
+                $temp = array();
+                $temp["id"] = $notification->id;
+                $temp["title"] = $notification->title;
+                $temp["subtitle"] = $notification->subtitle;
+                $temp["text"] = $notification->text;
+                $temp["image"] = $notification->image;
+                $temp["visible"] = $notification->visible;
+                $temp["created_at"] = $this->createdAtDateApp($notification->id, "created_at");
+                $temp["updated_at"] = $this->createdAtDateApp($notification->id, "updated_at");
+                $temp["deleted_at"] = $notification->deleted_at;
                 array_push($response, $temp);
             }
             echo json_encode($response);
