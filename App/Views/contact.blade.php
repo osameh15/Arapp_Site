@@ -4,7 +4,7 @@
         <title>ارتباط با آراپ</title>
     </head>
 <!-- bradcam_area  -->
-<div class="bradcam_area bradcam_bg_4">
+<div class="bradcam_area contact-us-image">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">

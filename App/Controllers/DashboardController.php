@@ -658,5 +658,4 @@ class DashboardController extends Controller
     }
 
     //endregion
-
 }

@@ -6,7 +6,6 @@ use Core\View;
 
 class AuthController extends Controller
 {
-
     //region helper functions
     private function checkUserLogin($salt, $encrypted_password, $password)
     {
@@ -374,7 +373,12 @@ class AuthController extends Controller
         {
             $phone = $this->validate_mobile_number($_POST['phone']);
             $user = User::where('mobile', $phone)->first();
-            if ($user && !is_null($user->verified_at))
+            if (empty($_POST['phone']))
+            {
+                $response['errors'] = "ابتدا شماره موبایل خود را وارد نمایید";
+            }
+
+            else if ($user && !is_null($user->verified_at))
             {
                 $hash = $this->checkUserLogin($user->salt, $user->password, $_POST['password']);
                 if (!$hash)
@@ -742,5 +746,4 @@ class AuthController extends Controller
     }
 
     //endregion
-
 }

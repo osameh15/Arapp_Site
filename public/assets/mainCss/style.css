@@ -1347,7 +1347,8 @@ h3 {
 
 /* line 1, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_slider.scss */
 .slider_bg_1 {
-    background-image: url(../img/banner/1.jpg);
+    background-image: url(../img/banner/araappp.jpg);
+
 }
 
 /* line 4, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_slider.scss */
@@ -1363,7 +1364,8 @@ h3 {
     background-image: url(../img/banner/4.jpg);
 }
 .slider_bg_5 {
-    background-image: url(../img/banner/araappp.jpg);
+    background-image: url(../img/banner/1.jpg);
+
 }
 
 /* line 10, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_slider.scss */
@@ -2106,23 +2108,34 @@ h3 {
 
 /* line 1, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_bradcam.scss */
 .bradcam_bg_1 {
-    background-image: url(../img/banner/bradcam.png);
+    background-image: url(../img/banner/1.jpg);
 }
 
 /* line 4, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_bradcam.scss */
 .bradcam_bg_2 {
-    background-image: url(../img/banner/bradcam2.png);
+    background-image: url(../img/banner/2.jpg);
 }
 
 /* line 7, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_bradcam.scss */
 .bradcam_bg_3 {
-    background-image: url(../img/banner/bradcam3.png);
+    background-image: url(../img/banner/araappp.jpg);
 }
 
 /* line 10, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_bradcam.scss */
 .bradcam_bg_4 {
-    background-image: url(../img/banner/bradcam4.png);
+    background-image: url(../img/banner/bradcam4.jpg);
 }
+.contact-us-image{
+    background-image: url(../img/contact/contact-us.png);
+
+}
+
+.service_image{
+    background-image: url(../img/contact/contact-us.png);
+
+}
+
+
 
 /* line 13, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_bradcam.scss */
 .bradcam_area {
@@ -2149,6 +2162,8 @@ h3 {
     width: 100%;
     height: 100%;
     background: #040E27;
+
+
     opacity: .1;
     z-index: -1;
     content: '';

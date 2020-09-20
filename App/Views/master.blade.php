@@ -81,13 +81,28 @@
                                         <li><a class="text-right" href="about">درباره ما</a></li>
                                         <li><a class="text-right" href="contact">ارتباط با ما</a></li>
                                         <li class="text-right">
-                                            <button type="button" class="btn btn-outline active color"><a
-                                                        class="text-right" href="login">
-                                                    <i class="fa fa-user" aria-hidden="true"></i> ورود/ثبت نام </a>
-                                            </button>
+
+                                            @if(isset($user) && isset($_SESSION["userLogin"]) && !is_null($user))
+
+
+                                                <div class="dropdown">
+                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        {{$user->name}}
+
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <a class="dropdown-item text-center" href="/dashboard/addAdvertise">افزودن سرویس</a>
+                                                        <a class="dropdown-item text-center" href="/logout">خروج</a>
+                                                    </div>
+                                                </div>
+
+                                                @else
+                                                <button type="button" class="btn btn-outline active color"><a
+                                                            class="text-right" href="login">
+                                                        <i class="fa fa-user" aria-hidden="true"></i> ورود/ثبت نام </a>
+                                                </button>
+                                                @endif
                                         </li>
-
-
                                     </ul>
                                 </nav>
                             </div>
@@ -105,10 +120,8 @@
     </div>
 </header>
 <!-- header-end -->
-<body>
 
 @yield('content')
-</body>
 
 
 <footer class="footer p-0">
@@ -119,7 +132,7 @@
 
                     <div class="footer_widget">
                         <h3 class="footer_title text-center">
-                            شرکت
+                            شرکت آراپ
                         </h3>
 
                         <div class="container">
@@ -136,18 +149,19 @@
                                 <div class="col-md-4 mt-2">
                                     <ul class="links">
                                         <li class="text-center"><a href="#"><b>سرویس‌های محبوب</b></a></li>
-                                        <li class="text-center"><a href="#">سرویس محبوب 1</a></li>
-                                        <li class="text-center"><a href="#">سرویس محبوب 2</a></li>
-                                        <li class="text-center"><a href="#">سرویس محبوب 3</a></li>
+                                        <li class="text-center"><a href="#">کافه لاماسیا</a></li>
+                                        <li class="text-center"><a href="#">رستوران محرم</a></li>
+                                        <li class="text-center"><a href="#">فروشگاه گیزمیز</a></li>
                                     </ul>
                                 </div>
 
                                 <div class="col-md-4 mt-2">
                                     <ul class="links">
-                                        <li class="text-center"><a href="/about">درباره ما</a></li>
-                                        <li class="text-center"><a href="/contact">ارتباط ما</a></li>
-                                        <li class="text-center"><a href="#"> گزارش مشکلات</a></li>
-                                        <li class="text-center"><a href="#">سوالات متداول</a></li>
+                                        <li class="text-center"><a href="/about">وبلاگ</a></li>
+                                        <li class="text-center"><a href="/contact">خدمات سرویس دهندگان</a></li>
+                                        <li class="text-center"><a href="#">خدمات سرویس گیرندگان</a></li>
+                                        <li class="text-center"><a href="#">حریم خصوصی</a></li>
+                                        {{--todo daryaft app--}}
                                     </ul>
                                 </div>
                             </div>

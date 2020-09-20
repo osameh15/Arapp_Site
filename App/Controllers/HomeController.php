@@ -51,15 +51,21 @@ class HomeController extends Controller
     //Index ...
     public function index()
     {
+        $user=null;
         $categories = Category::all();
         $specials = Advertise::query()->where("special", 1)->get();
         $no_specials = Advertise::query()->where("special", null)->get();
+        if (isset($_SESSION["userLogin"]))
+        {
+            $user=User::where("mobile",$_SESSION['userLogin'])->first();
+        }
         return View::renderTemplate("index",
-        [
-            'categories' => $categories,
-            'specials' => $specials,
-            'no_specials' => $no_specials,
-        ]);
+            [
+                'categories' => $categories,
+                'specials' => $specials,
+                'no_specials' => $no_specials,
+                "user"=>$user,
+            ]);
     }
 
     //Contact with us ...
@@ -68,9 +74,9 @@ class HomeController extends Controller
         $categories = Category::all();
 
         return View::renderTemplate("contact",
-        [
-            'categories' => $categories
-        ]);
+            [
+                'categories' => $categories
+            ]);
 
     }
 
@@ -79,39 +85,41 @@ class HomeController extends Controller
     {
         $categories = Category::all();
         return View::renderTemplate("about",
-        [
-            'categories' => $categories
-        ]);
+            [
+                'categories' => $categories
+            ]);
     }
 
     //Function to show service of each category ...
     public function showService()
     {
-        if (isset($_GET['service']))
-        {
-            $categories = Category::all();
-            $service = Advertise::query()->where("slug", $_GET['service'])->first();
-            $comments = $service->comments()->with("user")->get();
+//        if (isset($_GET['service']))
+//        {
+//            $categories = Category::all();
+//            $service = Advertise::query()->where("slug", $_GET['service'])->first();
+//            $comments = $service->comments()->with("user")->get();
+//
+//            $rates = Rate::where("ads_id",$service->id)->get();
+//            $count = 0;
+//            $total = 0;
+//            foreach ($rates as $rate)
+//            {
+//                $count++;
+//                $total+=$rate->rate;
+//
+//            }
+//            $avg = $total/$count;
+//            return View::renderTemplate("servicePage",
+//            [
+//                'categories' => $categories,
+//                'service' => $service,
+//                'comments' => $comments,
+//                'avg'=>$avg
+//            ]);
+//        }
 
-            $rates = Rate::where("ads_id",$service->id)->get();
-            $count = 0;
-            $total = 0;
-            foreach ($rates as $rate)
-            {
-                $count++;
-                $total+=$rate->rate;
-
-            }
-            $avg = $total/$count;
-            return View::renderTemplate("servicePage",
-            [
-                'categories' => $categories,
-                'service' => $service,
-                'comments' => $comments,
-                'avg'=>$avg
-            ]);
-        }
-        return View::renderTemplate("servicePage", []);
+        $categories = Category::all();
+        return View::renderTemplate("servicePage", compact("categories"));
     }
 
     //Function to add comment ...
@@ -191,7 +199,8 @@ class HomeController extends Controller
     //Blog of Arapp ...
     public function blog()
     {
-        dd("ss");
+        $categories=Category::all();
+        return View::renderTemplate("blog", compact("categories"));
     }
 
     //endregion
