@@ -7,7 +7,7 @@
         <div class="container-login100">
             <div class="wrap-login100">
                 <div class="login100-pic js-tilt mt-5 ml-5" data-tilt>
-                    <img src="assets/img/navlogo.png" alt="IMG">
+                    <img src="assets/img/footerlogo.png" alt="IMG">
                 </div>
                 <form class="login100-form validate-form" action="" method="post">
 					<span class="login100-form-title">
