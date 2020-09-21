@@ -579,6 +579,7 @@ class AuthController extends Controller
                 {
                     $response["error"] = FALSE;
                     $response["error_msg"] = "با موفقیت وارد شدید";
+                    $response["service"] = $user->service;
                     echo json_encode($response);
                 }
             }
